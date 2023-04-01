@@ -3,6 +3,9 @@ from django.db import models
 
 class Station(models.Model):
     name = models.CharField('Название станции', max_length=255)
+    advantage_1 = models.CharField('Преимущество 1', max_length=255, null=True, blank=True)
+    advantage_2 = models.CharField('Преимущество 2', max_length=255, null=True, blank=True)
+    description = models.TextField('Описание', null=True, blank=True)
     url_free = models.CharField('URL потока для бесплатной версии', max_length=255, null=True, blank=True)
     url_paid = models.CharField('URL потока для платной версии', max_length=255, null=True, blank=True)
     order = models.PositiveIntegerField('Порядковый номер', null=True)
