@@ -13,9 +13,7 @@ class Station(models.Model):
     miniature = models.ImageField('Изображение миниатюры', upload_to='images/', null=True, blank=True)
     bg_image = models.ImageField('Изображение для фона', upload_to='images/', null=True, blank=True)
     poster = models.ImageField('Обложка', upload_to='images/', null=True, blank=True)
-
     buy_trek = models.FileField('Трек перед покупкой', upload_to='files/', null=True, blank=True)
-    start_trek = models.FileField('Tрек при первом запуске', upload_to='files/', null=True, blank=True)
 
     created_date = models.DateTimeField('Дата создания', auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -25,3 +23,15 @@ class Station(models.Model):
 
     class Meta:
         ordering = ('order',)
+
+
+class Track(models.Model):
+    name = models.CharField('Название трека', max_length=255)
+    file = models.FileField('Файл', upload_to='tracks/', null=True, blank=True)
+
+    created_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
